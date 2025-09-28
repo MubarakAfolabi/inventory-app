@@ -11,7 +11,21 @@
   <body>
     <%- include('./partials/header.ejs') %>
     <main>
-      <h1><%= title %></h1>
+      <header>
+        <h1><%= title %></h1>
+      </header>
+
+      <section>
+        <ul>
+          <% developers.forEach(developer => { %>
+          <li>
+            <a href="/developers/<%= developer %>/games">
+              <button><%= developer %></button>
+            </a>
+          </li>
+          <% }) %>
+        </ul>
+      </section>
     </main>
 
     <%- include('./partials/footer.ejs') %>
