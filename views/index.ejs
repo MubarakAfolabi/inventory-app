@@ -3,18 +3,34 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="/styles.css" />
-    <link rel="stylesheet" href="header.css" />
-    <link rel="stylesheet" href="/index.css" />
+    <link rel="stylesheet" href="/styles/styles.css" />
+    <link rel="stylesheet" href="/styles/header.css" />
+    <link rel="stylesheet" href="/styles/gameCard.css" />
+    <link rel="stylesheet" href="/styles/index.css" />
     <title>Document</title>
   </head>
   <body>
     <%- include('./partials/header.ejs') %>
 
     <main class="main">
-      <h1>Game Inventory</h1>
-      <a href="/games">
-        <span>View Games</span>
+      <header>
+        <h1>Game Inventory</h1>
+      </header>
+
+      <section>
+        <ul>
+          <% for( let i = 0; i < 3; i++ ) { %>
+          <li>
+            <a href="/games/<%= i %>"
+              ><%- include('./partials/gameCard.ejs', {game: storage[i]}) %></a
+            >
+          </li>
+          <% } %>
+        </ul>
+      </section>
+
+      <a class="view-all" href="/games">
+        <span>View All</span>
       </a>
     </main>
 

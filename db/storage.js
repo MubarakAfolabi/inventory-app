@@ -61,4 +61,9 @@ const gameArr = [
   },
 ];
 
+function Storage() {
+  let gameInfo = {};
+  let id = 0;
+}
+
 module.exports = gameArr;
