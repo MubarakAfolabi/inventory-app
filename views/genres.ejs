@@ -9,7 +9,25 @@
   </head>
   <body>
     <%- include('./partials/header.ejs') %>
-    <div>hello</div>
+
+    <main>
+      <header>
+        <h1><%= title %></h1>
+      </header>
+
+      <section>
+        <ul>
+          <% genres.forEach(genre => { %>
+          <li>
+            <a href="/genres/<%= genre %>/games">
+              <button><%= genre %></button>
+            </a>
+          </li>
+          <% }) %>
+        </ul>
+      </section>
+    </main>
+
     <%- include('./partials/footer.ejs') %>
   </body>
 </html>
