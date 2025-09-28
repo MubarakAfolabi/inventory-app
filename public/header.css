@@ -1,0 +1,24 @@
+.header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: var(--padding-md);
+  gap: var(--gap-sm);
+}
+.header nav {
+  display: flex;
+  gap: var(--gap-sm);
+  border: solid;
+  border-width: 1px;
+  padding: var(--padding-md) var(--padding-md);
+}
+.header nav a span,
+.main a span {
+  font-size: var(--text-size-md);
+  font-weight: bold;
+  cursor: pointer;
+}
+.header nav a span:hover,
+.main a span:hover {
+  border-bottom: solid;
+}

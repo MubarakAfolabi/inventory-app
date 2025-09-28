@@ -6,7 +6,10 @@
   --padding-sm: 0.5rem;
   --padding-md: 1rem;
 
+  --margin-sm: 1rem;
+
   --gap-sm: 1rem;
+  --gap-md: 1.5rem;
 }
 
 * {
@@ -22,45 +25,4 @@ body {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
-}
-
-.header {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: var(--padding-md);
-  gap: var(--gap-sm);
-  /* border-bottom: solid; */
-  /* border-bottom-width: 1px; */
-}
-
-.header nav {
-  display: flex;
-  gap: var(--gap-sm);
-  border: solid;
-  border-width: 1px;
-  padding: var(--padding-md) var(--padding-md);
-}
-.header nav a span,
-.main a span {
-  font-size: var(--text-size-md);
-  font-weight: bold;
-  cursor: pointer;
-}
-.header nav a span:hover,
-.main a span:hover {
-  border-bottom: solid;
-}
-
-.main {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  gap: var(--gap-sm);
-  align-items: center;
-}
-
-.main h1 {
-  font-size: var(--heading-size-md);
 }

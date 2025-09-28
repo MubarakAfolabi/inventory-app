@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/styles.css" />
+    <link rel="stylesheet" href="/header.css" />
+    <link rel="stylesheet" href="/gameInfo.css" />
+    <title><%= title %></title>
+  </head>
+  <body>
+    <%- include('./partials/header.ejs') %>
+
+    <main>
+      <header>
+        <h1><%= title %></h1>
+      </header>
+
+      <section>
+        <div class="img-container">
+          <img src="<%= gameInfo.image %>" />
+        </div>
+        <div class="details">
+          <h2><%= gameInfo.name%></h2>
+          <p><%= gameInfo.genre %> • <%= gameInfo.yearReleased %></p>
+          <p>Rating: <%= gameInfo.rating %></p>
+          <p>Developer: <%= gameInfo.developer %></p>
+        </div>
+
+        <h3>About</h3>
+        <p><%= gameInfo.about %></p>
+      </section>
+    </main>
+
+    <%- include('./partials/footer.ejs') %>
+  </body>
+</html>
