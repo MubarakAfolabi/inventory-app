@@ -5,6 +5,7 @@ const app = express();
 const indexRouter = require("./routes/indexRouter");
 const gameRouter = require("./routes/gameRouter");
 const genreRouter = require("./routes/genreRouter");
+const developersRouter = require("./routes/developersRouter");
 
 const assetsPath = path.join(__dirname, "public");
 app.use(express.static(assetsPath));
@@ -14,6 +15,7 @@ app.set("view engine", "ejs");
 app.use("/", indexRouter);
 app.use("/games", gameRouter);
 app.use("/genres", genreRouter);
+app.use("/developers", developersRouter);
 
 const PORT = process.env.PORT || 3000;
 
