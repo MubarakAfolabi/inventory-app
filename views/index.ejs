@@ -19,13 +19,13 @@
 
       <section>
         <ul>
-          <% for( let i = 0; i < 3; i++ ) { %>
+          <% for( let i = 0; i < storage.length; i++ ) { %> <% if (i < 3) { %>
           <li>
             <a href="/games/<%= i %>"
               ><%- include('./partials/gameCard.ejs', {game: storage[i]}) %></a
             >
           </li>
-          <% } %>
+          <% } %> <% } %>
         </ul>
       </section>
 

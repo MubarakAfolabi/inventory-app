@@ -1,10 +1,11 @@
 const storage = require("../db/storage");
+const genreClass = require("../db/genre");
 
 const genrePageGet = (req, res) => {
   const genres = [];
-  storage.forEach((game) => {
-    if (!genres.includes(game.genre)) {
-      genres.push(game.genre);
+  genreClass.getGenres().forEach((genreItem) => {
+    if (!genres.includes(genreItem.genre)) {
+      genres.push(genreItem.genre);
     }
   });
   res.render("genres", { title: "Genre", genres: genres });
@@ -13,12 +14,12 @@ const genrePageGet = (req, res) => {
 const genreGamesGet = (req, res) => {
   const games = [];
   const { genre } = req.params;
-  storage.forEach((game) => {
+  storage.getGames().forEach((game) => {
     if (game.genre === genre) {
       games.push(game);
     }
   });
-  res.render("gamesList", { title: games, storage: games });
+  res.render("gamesList", { title: "Games", storage: games });
 };
 
 module.exports = {

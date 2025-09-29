@@ -1,69 +1,57 @@
-const gameArr = [
-  {
-    id: 0,
-    name: "GTA IV",
-    genre: "Action",
-    rating: "4.5/5",
-    developer: "Rockstar",
-    yearReleased: 2008,
-    image: "/images/gta4.jpg",
-    about: "Lorem Ipsum",
-  },
-  {
-    id: 1,
-    name: "MAFIA II",
-    genre: "Action",
-    rating: "4.9/5",
-    developer: "Take II",
-    yearReleased: 2010,
-    image: "/images/mafia2.jpg",
-    about: "Lorem Ipsum",
-  },
-  {
-    id: 1,
-    name: "MAFIA II",
-    genre: "Romance",
-    rating: "4.9/5",
-    developer: "Take II",
-    yearReleased: 2010,
-    image: "/images/mafia2.jpg",
-    about: "Lorem Ipsum",
-  },
-  {
-    id: 1,
-    name: "MAFIA II",
-    genre: "890129",
-    rating: "4.9/5",
-    developer: "Take II",
-    yearReleased: 2010,
-    image: "/images/mafia2.jpg",
-    about: "Lorem Ipsum",
-  },
-  {
-    id: 1,
-    name: "MAFIA II",
-    genre: "wenwjekw",
-    rating: "4.9/5",
-    developer: "Take II",
-    yearReleased: 2010,
-    image: "/images/mafia2.jpg",
-    about: "Lorem Ipsum",
-  },
-  {
-    id: 1,
-    name: "MAFIA II",
-    genre: "lorem",
-    rating: "4.9/5",
-    developer: "Take II",
-    yearReleased: 2010,
-    image: "/images/mafia2.jpg",
-    about: "Lorem Ipsum",
-  },
-];
+const genreClass = require("../db/genre");
+const developerClass = require("../db/developers");
 
 function Storage() {
   let gameInfo = {};
   let id = 0;
+
+  const addGame = ({
+    name,
+    imageSrc,
+    genre,
+    rating,
+    yearReleased,
+    developer,
+    about,
+  }) => {
+    gameInfo[id] = {
+      id,
+      imageSrc,
+      name,
+      genre,
+      rating,
+      yearReleased,
+      developer,
+      about,
+    };
+    genreClass.addGenre({ genre: genre });
+    developerClass.addDeveloper({ developer: developer });
+    console.log(genreClass.getGenres());
+    console.log(developerClass.getDevelopers());
+    id++;
+  };
+
+  const getGames = () => {
+    return Object.values(gameInfo);
+  };
+
+  const getGame = (id) => {
+    return gameInfo[id];
+  };
+
+  return { addGame, getGame, getGames };
 }
 
-module.exports = gameArr;
+const storage = Storage();
+
+storage.addGame({
+  name: "GTA IV",
+  imageSrc: "/images/gta4.jpg",
+  genre: "Action",
+  rating: "4.5/5",
+  yearReleased: 2008,
+  developer: "Rockstar",
+  about: "Lorem Ipsum",
+});
+
+module.exports = storage;
