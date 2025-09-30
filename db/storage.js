@@ -16,7 +16,7 @@ function Storage() {
   }) => {
     gameInfo[id] = {
       id,
-      imageSrc: file ? "/uploads/" + file.filename : "",
+      imageSrc: "/uploads/" + file.filename,
       name,
       genre,
       rating,
@@ -41,10 +41,12 @@ function Storage() {
     id,
     { name, file, genre, rating, yearReleased, developer, about }
   ) => {
+    const oldImg = gameInfo[id].imageSrc;
+
     gameInfo[id] = {
       id,
       name,
-      image: file ? "/uploads/" + file.filename : "",
+      imageSrc: file ? "/uploads/" + file.filename : oldImg,
       genre,
       rating,
       yearReleased,

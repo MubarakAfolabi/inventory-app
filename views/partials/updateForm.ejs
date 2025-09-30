@@ -1,0 +1,50 @@
+<form action="/games/list/<%= game.id %>/update" method="post">
+  <label for="name">Name: </label>
+  <input type="text" name="name" id="name" value="<%= game.name %>" required />
+
+  <label for="avatar">Image: </label>
+  <input type="file" name="avatar" id="avatar" value="<%= game.imageSrc %>" />
+
+  <label for="genre">Genre: </label>
+  <input
+    type="text"
+    name="genre"
+    id="genre"
+    value="<%= game.genre %>"
+    required
+  />
+
+  <label for="rating">Rating: </label>
+  <input
+    type="number"
+    name="rating"
+    id="rating"
+    value="<%= game.rating %>"
+    required
+  />
+
+  <label for="yearReleased">Year Released: </label>
+  <input
+    type="number"
+    name="yearReleased"
+    id="yearReleased"
+    value="<%= game.yearReleased %>"
+    required
+  />
+
+  <label for="developer">Developer: </label>
+  <input
+    type="text"
+    name="developer"
+    id="developer"
+    value="<%= game.developer %>"
+    required
+  />
+
+  <label for="about">About: </label>
+  <textarea name="about" id="about" rows="3" cols="15" required>
+<%= game.about %></textarea
+  >
+
+  <button type="submit">Add Game</button>
+</form>
