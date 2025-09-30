@@ -31,4 +31,16 @@ const addGamePost = (req, res) => {
   res.redirect("/games");
 };
 
-module.exports = { gamesListGet, gameInfoGet, addGameGet, addGamePost };
+const deleteGamePost = (req, res) => {
+  const { id } = req.params;
+  storage.deleteGame(id);
+  res.redirect("/games");
+};
+
+module.exports = {
+  gamesListGet,
+  gameInfoGet,
+  addGameGet,
+  addGamePost,
+  deleteGamePost,
+};

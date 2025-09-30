@@ -29,6 +29,20 @@
 
         <h3>About</h3>
         <p><%= gameInfo.about %></p>
+
+        <div>
+          <a>
+            <button>Update</button>
+          </a>
+
+          <form action="/games/list/<%= gameInfo.id %>/delete" method="post">
+            <button
+              onclick="return confirm ('Are you sure you want to delete this game?')"
+            >
+              Delete
+            </button>
+          </form>
+        </div>
       </section>
     </main>
 

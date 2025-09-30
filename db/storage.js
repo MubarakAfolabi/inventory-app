@@ -39,7 +39,11 @@ function Storage() {
     return gameInfo[id];
   };
 
-  return { addGame, getGame, getGames };
+  const deleteGame = (id) => {
+    delete gameInfo[id];
+  };
+
+  return { addGame, getGame, getGames, deleteGame };
 }
 
 const storage = Storage();
