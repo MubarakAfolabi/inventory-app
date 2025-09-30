@@ -1,7 +1,12 @@
 const storage = require("../db/storage");
 
 const gamesListGet = (req, res) => {
-  res.render("gamesList", { title: "Games", storage: storage.getGames() });
+  let message;
+  res.render("gamesList", {
+    title: "Games",
+    storage: storage.getGames(),
+    message: message,
+  });
 };
 
 const gameInfoGet = (req, res) => {

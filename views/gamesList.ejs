@@ -23,17 +23,21 @@
         </nav>
       </header>
 
+      <% if (message) { %>
+      <p><%= message %></p>
+      <% } else { %>
       <section>
         <ul>
           <% storage.forEach((game, index) => { %>
           <li>
-            <a href="/games/list/<%= index %>"
-              ><%- include('./partials/gameCard.ejs', {game : game}) %></a
-            >
-            <% }) %>
+            <a href="/games/list/<%= index %>">
+              <%- include('./partials/gameCard.ejs', { game: game }) %>
+            </a>
           </li>
+          <% }) %>
         </ul>
       </section>
+      <% } %>
     </main>
 
     <%- include('./partials/footer.ejs') %>

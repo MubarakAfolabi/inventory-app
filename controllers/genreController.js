@@ -12,6 +12,7 @@ const genrePageGet = (req, res) => {
 };
 
 const genreGamesGet = (req, res) => {
+  let message;
   const games = [];
   const { genre } = req.params;
   storage.getGames().forEach((game) => {
@@ -19,7 +20,10 @@ const genreGamesGet = (req, res) => {
       games.push(game);
     }
   });
-  res.render("gamesList", { title: "Games", storage: games });
+  if (games.length === 0) {
+    message = `No Games Found Under ${genre}`;
+  }
+  res.render("gamesList", { title: "Games", storage: games, message: message });
 };
 
 const addGenreGet = (req, res) => {

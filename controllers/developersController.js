@@ -13,13 +13,18 @@ const developerPageGet = (req, res) => {
 
 const developerGamesGet = (req, res) => {
   const games = [];
+  let message;
   const { developer } = req.params;
   storage.getGames().forEach((game) => {
     if (game.developer === developer) {
       games.push(game);
     }
   });
-  res.render("gamesList", { title: "Games", storage: games });
+
+  if (games.length === 0) {
+    message = `No Games Found Under ${developer}`;
+  }
+  res.render("gamesList", { title: "Games", storage: games, message: message });
 };
 
 const addDeveloperGet = (req, res) => {
