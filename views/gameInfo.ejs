@@ -23,21 +23,22 @@
         <div class="details">
           <h2><%= gameInfo.name%></h2>
           <p><%= gameInfo.genre %> • <%= gameInfo.yearReleased %></p>
-          <p>Rating: <%= gameInfo.rating %></p>
+          <p>Rating: <%= gameInfo.rating %>/5</p>
           <p>Developer: <%= gameInfo.developer %></p>
         </div>
 
         <h3>About</h3>
         <p><%= gameInfo.about %></p>
 
-        <div>
+        <div class="button-container">
           <a href="/games/list/<%= gameInfo.id %>/update">
             <button>Update</button>
           </a>
 
           <form action="/games/list/<%= gameInfo.id %>/delete" method="post">
             <button
-              onclick="return confirm ('Are you sure you want to delete this game?')"
+              class="delete-button"
+              onclick="return confirm ('Are you sure you want to delete this info?')"
             >
               Delete
             </button>

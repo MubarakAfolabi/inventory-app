@@ -1,4 +1,5 @@
 .main {
+  color: hsl(277, 95%, 15%);
   flex: 1;
   display: flex;
   flex-direction: column;
@@ -20,7 +21,12 @@ section ul {
 }
 
 .view-all {
+  color: hsl(277, 95%, 15%);
+  text-decoration: none;
   text-align: center;
+}
+.view-all:hover {
+  color: hsl(319, 83%, 36%);
 }
 
 @media (min-width: 48em) {

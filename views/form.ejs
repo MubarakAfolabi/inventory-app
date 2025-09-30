@@ -5,23 +5,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="/styles/styles.css" />
     <link rel="stylesheet" href="/styles/header.css" />
+    <link rel="stylesheet" href="/styles/form.css" />
     <title><%= title %></title>
   </head>
   <body>
     <%- include('./partials/header.ejs') %>
+    <main>
+      <header>
+        <h1><%= title %></h1>
+      </header>
 
-    <header>
-      <h1><%= title %></h1>
-    </header>
-
-    <section>
-      <% if (url.includes('genres/add')) { %> <%-
-      include('./partials/genreForm.ejs') %> <% } else if
-      (url.includes('developers/add')) { %> <%-
-      include('./partials/developerForm.ejs') %> <% } else if
-      (url.includes('games/add')) { %> <%- include('./partials/gameForm.ejs') %>
-      <% } else if (url.includes('update')) { %> <%-
-      include('./partials/updateForm.ejs') %> <% } %>
-    </section>
+      <section>
+        <% if (url.includes('genres/add')) { %> <%-
+        include('./partials/genreForm.ejs') %> <% } else if
+        (url.includes('developers/add')) { %> <%-
+        include('./partials/developerForm.ejs') %> <% } else if
+        (url.includes('games/add')) { %> <%- include('./partials/gameForm.ejs')
+        %> <% } else if (url.includes('update')) { %> <%-
+        include('./partials/updateForm.ejs') %> <% } %>
+      </section>
+    </main>
   </body>
 </html>

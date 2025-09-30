@@ -47,6 +47,7 @@ const updateGameGet = (req, res) => {
 };
 
 const updateGamePost = (req, res) => {
+  console.log(req.file);
   const { id } = req.params;
   const { name, genre, rating, yearReleased, developer, about } = req.body;
   if (req.file) {

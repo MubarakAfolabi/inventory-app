@@ -1,9 +1,13 @@
-<form action="/games/list/<%= game.id %>/update" method="post">
+<form
+  action="/games/list/<%= game.id %>/update"
+  method="post"
+  enctype="multipart/form-data"
+>
   <label for="name">Name: </label>
   <input type="text" name="name" id="name" value="<%= game.name %>" required />
 
   <label for="avatar">Image: </label>
-  <input type="file" name="avatar" id="avatar" value="<%= game.imageSrc %>" />
+  <input type="file" name="avatar" id="avatar" />
 
   <label for="genre">Genre: </label>
   <input
@@ -46,5 +50,5 @@
 <%= game.about %></textarea
   >
 
-  <button type="submit">Add Game</button>
+  <button type="submit">Update Info</button>
 </form>

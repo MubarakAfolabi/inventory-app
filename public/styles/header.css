@@ -9,9 +9,21 @@
   display: flex;
   gap: var(--gap-sm);
   border-radius: 5px;
+  border: solid;
+  border-width: 2px;
+  border-color: hsl(319, 83%, 36%);
   padding: var(--padding-md) var(--padding-md);
   box-shadow: 0 0 10px hsla(0, 0%, 0%, 0.22);
 }
+
+.header nav a {
+  color: hsl(277, 95%, 15%);
+  text-decoration: none;
+}
+.header nav a:hover {
+  color: hsl(319, 83%, 36%);
+}
+
 .header nav a span,
 .main a span {
   font-size: var(--text-size-md);
