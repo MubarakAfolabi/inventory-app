@@ -1,6 +1,9 @@
-<form action="/games/add" method="post">
+<form action="/games/add" method="post" enctype="multipart/form-data">
   <label for="name">Name: </label>
   <input type="text" name="name" id="name" required />
+
+  <label for="avatar">Image: </label>
+  <input type="file" name="avatar" id="avatar" required />
 
   <label for="genre">Genre: </label>
   <input type="text" name="genre" id="genre" required />

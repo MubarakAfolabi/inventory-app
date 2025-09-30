@@ -7,6 +7,7 @@ const gamesListGet = (req, res) => {
 const gameInfoGet = (req, res) => {
   const { id } = req.params;
   const gameInfo = storage.getGame(id);
+  console.log(gameInfo);
   res.render("gameInfo.ejs", { title: "Game Info", gameInfo: gameInfo });
 };
 
@@ -15,16 +16,18 @@ const addGameGet = (req, res) => {
 };
 
 const addGamePost = (req, res) => {
+  console.log(req.file);
   const { name, genre, rating, yearReleased, developer, about } = req.body;
   storage.addGame({
     name: name,
-    imageSrc: "/images/mafia2.jpg",
+    file: req.file,
     genre: genre,
     rating: rating,
     yearReleased: yearReleased,
     developer: developer,
     about: about,
   });
+  console.log(storage.getGames());
   res.redirect("/games");
 };
 

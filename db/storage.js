@@ -7,7 +7,7 @@ function Storage() {
 
   const addGame = ({
     name,
-    imageSrc,
+    file,
     genre,
     rating,
     yearReleased,
@@ -16,7 +16,7 @@ function Storage() {
   }) => {
     gameInfo[id] = {
       id,
-      imageSrc,
+      imageSrc: file ? "/uploads/" + file.filename : "",
       name,
       genre,
       rating,
@@ -44,14 +44,14 @@ function Storage() {
 
 const storage = Storage();
 
-storage.addGame({
-  name: "GTA IV",
-  imageSrc: "/images/gta4.jpg",
-  genre: "Action",
-  rating: "4.5/5",
-  yearReleased: 2008,
-  developer: "Rockstar",
-  about: "Lorem Ipsum",
-});
+// storage.addGame({
+//   name: "GTA IV",
+//   file:
+//   genre: "Action",
+//   rating: "4.5/5",
+//   yearReleased: 2008,
+//   developer: "Rockstar",
+//   about: "Lorem Ipsum",
+// });
 
 module.exports = storage;
