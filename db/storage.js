@@ -26,8 +26,6 @@ function Storage() {
     };
     genreClass.addGenre({ genre: genre });
     developerClass.addDeveloper({ developer: developer });
-    console.log(genreClass.getGenres());
-    console.log(developerClass.getDevelopers());
     id++;
   };
 
@@ -39,11 +37,27 @@ function Storage() {
     return gameInfo[id];
   };
 
+  const updateGame = (
+    id,
+    { name, file, genre, rating, yearReleased, developer, about }
+  ) => {
+    gameInfo[id] = {
+      id,
+      name,
+      image: file ? "/uploads/" + file.filename : "",
+      genre,
+      rating,
+      yearReleased,
+      developer,
+      about,
+    };
+  };
+
   const deleteGame = (id) => {
     delete gameInfo[id];
   };
 
-  return { addGame, getGame, getGames, deleteGame };
+  return { addGame, getGame, getGames, updateGame, deleteGame };
 }
 
 const storage = Storage();
