@@ -22,4 +22,19 @@ const developerGamesGet = (req, res) => {
   res.render("gamesList", { title: "Games", storage: games });
 };
 
-module.exports = { developerPageGet, developerGamesGet };
+const addDeveloperGet = (req, res) => {
+  res.render("form", { title: "Add Developer", url: req.originalUrl });
+};
+
+const addDeveloperPost = (req, res) => {
+  const { developer } = req.body;
+  developerClass.addDeveloper({ developer: developer });
+  res.redirect("/developers");
+};
+
+module.exports = {
+  developerPageGet,
+  developerGamesGet,
+  addDeveloperGet,
+  addDeveloperPost,
+};

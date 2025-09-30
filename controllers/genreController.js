@@ -22,7 +22,19 @@ const genreGamesGet = (req, res) => {
   res.render("gamesList", { title: "Games", storage: games });
 };
 
+const addGenreGet = (req, res) => {
+  res.render("form", { title: "Add Genre", url: req.originalUrl });
+};
+
+const addGenrePost = (req, res) => {
+  const { genre } = req.body;
+  genreClass.addGenre({ genre: genre });
+  res.redirect("/genres");
+};
+
 module.exports = {
   genrePageGet,
   genreGamesGet,
+  addGenreGet,
+  addGenrePost,
 };

@@ -10,4 +10,22 @@ const gameInfoGet = (req, res) => {
   res.render("gameInfo.ejs", { title: "Game Info", gameInfo: gameInfo });
 };
 
-module.exports = { gamesListGet, gameInfoGet };
+const addGameGet = (req, res) => {
+  res.render("form", { title: "Add Game", url: req.originalUrl });
+};
+
+const addGamePost = (req, res) => {
+  const { name, genre, rating, yearReleased, developer, about } = req.body;
+  storage.addGame({
+    name: name,
+    imageSrc: "/images/mafia2.jpg",
+    genre: genre,
+    rating: rating,
+    yearReleased: yearReleased,
+    developer: developer,
+    about: about,
+  });
+  res.redirect("/games");
+};
+
+module.exports = { gamesListGet, gameInfoGet, addGameGet, addGamePost };
