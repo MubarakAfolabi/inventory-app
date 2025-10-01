@@ -25,8 +25,8 @@
         <ul>
           <% genres.forEach(genre => { %>
           <li>
-            <a href="/genres/<%= genre %>/games">
-              <button><%= genre %></button>
+            <a href="/genres/<%= genre.genre %>/games">
+              <button><%= genre.genre %></button>
             </a>
           </li>
           <% }) %>

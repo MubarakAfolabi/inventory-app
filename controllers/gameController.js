@@ -51,15 +51,16 @@ async function infoListGet(req, res) {
   const info = await db.getAllInfo();
   res.render("gamesList", {
     title: "Games",
-    storage: await info,
+    storage: info,
     message: message,
   });
 }
 
-const gameInfoGet = (req, res) => {
+const gameInfoGet = async (req, res) => {
   const { id } = req.params;
-  const gameInfo = storage.getGame(id);
-  res.render("gameInfo.ejs", { title: "Game Info", gameInfo: gameInfo });
+  const gameInfo = await db.getInfo(id);
+  console.log(gameInfo);
+  res.render("gameInfo.ejs", { title: "Game Info", gameInfo: gameInfo[0] });
 };
 
 const addGameGet = (req, res) => {

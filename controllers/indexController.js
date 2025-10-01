@@ -1,7 +1,9 @@
 const storage = require("../db/storage");
+const db = require("../db/queries");
 
-const getIndexPage = (req, res) => {
-  res.render("index", { storage: storage.getGames() });
+const getIndexPage = async (req, res) => {
+  const info = await db.getAllInfo();
+  res.render("index", { storage: info });
 };
 
 module.exports = { getIndexPage };

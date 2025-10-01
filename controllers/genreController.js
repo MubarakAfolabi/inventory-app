@@ -1,6 +1,7 @@
 const { body, validationResult } = require("express-validator");
 const storage = require("../db/storage");
 const genreClass = require("../db/genre");
+const db = require("../db/queries");
 
 const lengthErr = "must be between 1 and 15 characters.";
 
@@ -17,13 +18,8 @@ const validationInfo = [
     .withMessage(`Genre ${lengthErr}`),
 ];
 
-const genrePageGet = (req, res) => {
-  const genres = [];
-  genreClass.getGenres().forEach((genreItem) => {
-    if (!genres.includes(genreItem.genre)) {
-      genres.push(genreItem.genre);
-    }
-  });
+const genrePageGet = async (req, res) => {
+  const genres = await db.getAllGenres();
   res.render("genres", { title: "Genre", genres: genres });
 };
 

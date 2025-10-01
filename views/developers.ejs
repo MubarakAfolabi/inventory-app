@@ -25,8 +25,8 @@
         <ul>
           <% developers.forEach(developer => { %>
           <li>
-            <a href="/developers/<%= developer %>/games">
-              <button><%= developer %></button>
+            <a href="/developers/<%= developer.developer %>/games">
+              <button><%= developer.developer %></button>
             </a>
           </li>
           <% }) %>

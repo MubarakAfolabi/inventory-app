@@ -21,7 +21,7 @@
         <ul>
           <% for( let i = 0; i < storage.length; i++ ) { %> <% if (i < 3) { %>
           <li>
-            <a href="/games/list/<%= i %>"
+            <a href="/games/list/<%= i + 1 %>"
               ><%- include('./partials/gameCard.ejs', {game: storage[i]}) %></a
             >
           </li>

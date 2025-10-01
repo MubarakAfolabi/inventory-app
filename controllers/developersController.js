@@ -1,6 +1,7 @@
 const { body, validationResult } = require("express-validator");
 const developerClass = require("../db/developers");
 const storage = require("../db/storage");
+const db = require("../db/queries");
 
 const lengthErr = "must be between 1 and 15 characters.";
 
@@ -17,13 +18,8 @@ const validateInfo = [
     .withMessage(`Developer ${lengthErr}`),
 ];
 
-const developerPageGet = (req, res) => {
-  const developers = [];
-  developerClass.getDevelopers().forEach((item) => {
-    if (!developers.includes(item.developer)) {
-      developers.push(item.developer);
-    }
-  });
+const developerPageGet = async (req, res) => {
+  const developers = await db.getAllDevelopers();
   res.render("developers", { title: "Developers", developers: developers });
 };
 
