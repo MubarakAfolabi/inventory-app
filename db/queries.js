@@ -43,12 +43,22 @@ async function getGenreInfo(genre) {
   return rows;
 }
 
+async function addGenre(genre) {
+  await pool.query("INSERT INTO genreinfo (genre) VALUES ($1)", [genre]);
+}
+
 async function getDeveloperInfo(developer) {
   const { rows } = await pool.query(
     "SELECT * FROM gameinfo WHERE developer = ($1)",
     [developer]
   );
   return rows;
+}
+
+async function addDeveloper(developer) {
+  await pool.query("INSERT INTO developerinfo (developer) VALUES ($1)", [
+    developer,
+  ]);
 }
 
 async function getAllDevelopers() {
@@ -80,13 +90,20 @@ async function updateInfo(
   );
 }
 
+async function deleteInfo(id) {
+  await pool.query("DELETE FROM gameinfo WHERE id = $1", [id]);
+}
+
 module.exports = {
   addInfo,
   getAllInfo,
   getInfo,
   getGenreInfo,
+  addGenre,
   getDeveloperInfo,
+  addDeveloper,
   getAllDevelopers,
   getAllGenres,
   updateInfo,
+  deleteInfo,
 };

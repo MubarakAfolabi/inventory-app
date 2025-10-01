@@ -1,6 +1,4 @@
 const { body, validationResult } = require("express-validator");
-const developerClass = require("../db/developers");
-const storage = require("../db/storage");
 const db = require("../db/queries");
 
 const lengthErr = "must be between 1 and 15 characters.";
@@ -43,7 +41,7 @@ const addDeveloperGet = (req, res) => {
 
 const addDeveloperPost = [
   validateInfo,
-  (req, res) => {
+  async (req, res) => {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
       return res.status(400).render("developerForm", {
@@ -52,7 +50,7 @@ const addDeveloperPost = [
       });
     }
     const { developer } = req.body;
-    developerClass.addDeveloper({ developer: developer });
+    await db.addDeveloper(developer);
     res.redirect("/developers");
   },
 ];

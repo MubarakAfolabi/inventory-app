@@ -1,4 +1,3 @@
-const storage = require("../db/storage");
 const { body, validationResult } = require("express-validator");
 const db = require("../db/queries");
 
@@ -40,7 +39,6 @@ const validateInfo = [
 async function infoListGet(req, res) {
   let message;
   const info = await db.getAllInfo();
-  console.log(info);
   res.render("gamesList", {
     title: "Games",
     storage: info,
@@ -51,7 +49,6 @@ async function infoListGet(req, res) {
 const gameInfoGet = async (req, res) => {
   const { id } = req.params;
   const gameInfo = await db.getInfo(id);
-  console.log(gameInfo);
   res.render("gameInfo.ejs", { title: "Game Info", gameInfo: gameInfo[0] });
 };
 
@@ -86,7 +83,6 @@ const addInfoPost = [
 const updateGameGet = async (req, res) => {
   const { id } = req.params;
   const gameInfo = await db.getInfo(id);
-  console.log(gameInfo[0]);
   res.render("updateForm", {
     title: "Update Info",
     game: gameInfo[0],
@@ -124,9 +120,9 @@ const updateGamePost = [
   },
 ];
 
-const deleteGamePost = (req, res) => {
+const deleteGamePost = async (req, res) => {
   const { id } = req.params;
-  storage.deleteGame(id);
+  await db.deleteInfo(id);
   res.redirect("/games");
 };
 
