@@ -1,9 +1,11 @@
 :root {
   --heading-size-md: 3rem;
   --text-size-md: 1.1rem;
+  --text-size-lg: 1.8rem;
   --padding-sm: 0.5rem;
   --padding-md: 1rem;
   --margin-sm: 1rem;
+  --gap-xsm: 0.5rem;
   --gap-sm: 1rem;
   --gap-md: 1.5rem;
 }

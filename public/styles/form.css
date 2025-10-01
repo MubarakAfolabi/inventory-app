@@ -2,7 +2,6 @@ main {
   flex: 1;
   display: flex;
   flex-direction: column;
-  align-items: center;
   gap: var(--gap-md);
   padding: 0 var(--padding-md);
 }
@@ -12,4 +11,84 @@ header {
   flex-direction: column;
   align-items: center;
   gap: var(--gap-sm);
+}
+
+section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.add-form,
+.update-form,
+.genre-form,
+.developer-form {
+  flex: 1;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap-sm);
+  border-radius: 5px;
+  max-width: 40rem;
+  padding: var(--padding-md);
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.33);
+}
+
+.add-form div,
+.update-form div {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap-xsm);
+}
+
+.add-form input[type="text"],
+.add-form input[type="number"],
+.update-form input[type="text"],
+.update-form input[type="number"],
+.genre-form input,
+.developer-form input {
+  background-color: transparent;
+  font-size: var(--text-sm);
+  border: none;
+  border-bottom: solid;
+  border-width: 1px;
+  border-color: hsl(277, 95%, 15%);
+  height: 2rem;
+  width: 100%;
+  outline: none;
+}
+.add-form input:focus,
+.update-form input:focus,
+.genre-form input:focus,
+.developer-form input:focus {
+  border-color: hsl(319, 83%, 36%);
+}
+
+.add-form textarea,
+.update-form textarea {
+  resize: none;
+  border-radius: 5px;
+  outline-color: hsl(319, 83%, 36%);
+}
+
+.add-form button,
+.update-form button,
+.genre-form button,
+.developer-form button {
+  color: hsl(277, 95%, 15%);
+  font-size: var(--text-sm);
+  background-color: transparent;
+  padding: var(--padding-sm) 0;
+  border: solid;
+  border-width: 2px;
+  border-radius: 5px;
+  border-color: hsl(319, 83%, 36%);
+  cursor: pointer;
+}
+.add-form button:hover,
+.update-form button:hover,
+.genre-form button:hover,
+.developer-form button:hover {
+  color: white;
+  background-color: hsl(319, 83%, 36%);
 }

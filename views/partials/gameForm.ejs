@@ -1,24 +1,66 @@
-<form action="/games/add" method="post" enctype="multipart/form-data">
-  <label for="name">Name: </label>
-  <input type="text" name="name" id="name" required />
+<form
+  action="/games/add"
+  method="post"
+  enctype="multipart/form-data"
+  class="add-form"
+>
+  <div>
+    <label for="name">
+      <input placeholder="Name" type="text" name="name" id="name" required />
+    </label>
+  </div>
 
-  <label for="avatar">Image: </label>
-  <input type="file" name="avatar" id="avatar" required />
+  <div>
+    <label for="avatar">Image</label>
+    <input type="file" name="avatar" id="avatar" required />
+  </div>
 
-  <label for="genre">Genre: </label>
-  <input type="text" name="genre" id="genre" required />
+  <div>
+    <label for="genre">
+      <input placeholder="Genre" type="text" name="genre" id="genre" required />
+    </label>
+  </div>
 
-  <label for="rating">Rating: </label>
-  <input type="number" name="rating" id="rating" required />
+  <div>
+    <label for="rating">
+      <input
+        placeholder="Rating"
+        type="number"
+        name="rating"
+        id="rating"
+        required
+      />
+    </label>
+  </div>
 
-  <label for="yearReleased">Year Released: </label>
-  <input type="number" name="yearReleased" id="yearReleased" required />
+  <div>
+    <label for="yearReleased">
+      <input
+        placeholder="Year Released"
+        type="number"
+        name="yearReleased"
+        id="yearReleased"
+        required
+      />
+    </label>
+  </div>
 
-  <label for="developer">Developer: </label>
-  <input type="text" name="developer" id="developer" required />
+  <div>
+    <label for="developer">
+      <input
+        placeholder="Developer"
+        type="text"
+        name="developer"
+        id="developer"
+        required
+      />
+    </label>
+  </div>
 
-  <label for="about">About: </label>
-  <textarea name="about" id="about" rows="3" cols="15" required></textarea>
+  <div>
+    <label for="about">About</label>
+    <textarea name="about" id="about" rows="3" cols="15" required></textarea>
+  </div>
 
-  <button type="submit">Add Game</button>
+  <button type="submit">Add Info</button>
 </form>

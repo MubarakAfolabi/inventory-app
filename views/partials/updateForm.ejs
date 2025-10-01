@@ -2,53 +2,84 @@
   action="/games/list/<%= game.id %>/update"
   method="post"
   enctype="multipart/form-data"
+  class="update-form"
 >
-  <label for="name">Name: </label>
-  <input type="text" name="name" id="name" value="<%= game.name %>" required />
+  <div>
+    <label for="name">
+      <input
+        placeholder="Name"
+        type="text"
+        name="name"
+        id="name"
+        value="<%= game.name %>"
+        required
+      />
+    </label>
+  </div>
 
-  <label for="avatar">Image: </label>
-  <input type="file" name="avatar" id="avatar" />
+  <div>
+    <label for="avatar">Image</label>
+    <input type="file" name="avatar" id="avatar" />
+  </div>
 
-  <label for="genre">Genre: </label>
-  <input
-    type="text"
-    name="genre"
-    id="genre"
-    value="<%= game.genre %>"
-    required
-  />
+  <div>
+    <label for="genre">
+      <input
+        placeholder="Genre"
+        type="text"
+        name="genre"
+        id="genre"
+        value="<%= game.genre %>"
+        required
+      />
+    </label>
+  </div>
 
-  <label for="rating">Rating: </label>
-  <input
-    type="number"
-    name="rating"
-    id="rating"
-    value="<%= game.rating %>"
-    required
-  />
+  <div>
+    <label for="rating">
+      <input
+        placeholder="Rating"
+        type="number"
+        name="rating"
+        id="rating"
+        value="<%= game.rating %>"
+        required
+      />
+    </label>
+  </div>
 
-  <label for="yearReleased">Year Released: </label>
-  <input
-    type="number"
-    name="yearReleased"
-    id="yearReleased"
-    value="<%= game.yearReleased %>"
-    required
-  />
+  <div>
+    <label for="yearReleased">
+      <input
+        placeholder="Year Released"
+        type="number"
+        name="yearReleased"
+        id="yearReleased"
+        value="<%= game.yearReleased %>"
+        required
+      />
+    </label>
+  </div>
 
-  <label for="developer">Developer: </label>
-  <input
-    type="text"
-    name="developer"
-    id="developer"
-    value="<%= game.developer %>"
-    required
-  />
+  <div>
+    <label for="developer">
+      <input
+        placeholder="Developer"
+        type="text"
+        name="developer"
+        id="developer"
+        value="<%= game.developer %>"
+        required
+      />
+    </label>
+  </div>
 
-  <label for="about">About: </label>
-  <textarea name="about" id="about" rows="3" cols="15" required>
+  <div>
+    <label for="about">About</label>
+    <textarea name="about" id="about" rows="3" cols="15" required>
 <%= game.about %></textarea
-  >
+    >
+  </div>
 
   <button type="submit">Update Info</button>
 </form>
