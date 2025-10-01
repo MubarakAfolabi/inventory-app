@@ -92,3 +92,8 @@ section {
   color: white;
   background-color: hsl(319, 83%, 36%);
 }
+
+.errors {
+  list-style: none;
+  text-align: center;
+}

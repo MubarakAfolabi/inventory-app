@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/styles/styles.css" />
+    <link rel="stylesheet" href="/styles/header.css" />
+    <link rel="stylesheet" href="/styles/form.css" />
+    <title><%= title %></title>
+  </head>
+  <body>
+    <%- include('./partials/header.ejs') %>
+    <main>
+      <header>
+        <h1><%= title %></h1>
+      </header>
+
+      <section>
+        <form
+          action="/games/list/<%= game.id %>/update"
+          method="post"
+          enctype="multipart/form-data"
+          class="update-form"
+        >
+          <%- include('./partials/error.ejs') %>
+          <div>
+            <label for="name">
+              <input
+                placeholder="Name"
+                type="text"
+                name="name"
+                id="name"
+                value="<%= game.name %>"
+                required
+              />
+            </label>
+          </div>
+
+          <div>
+            <label for="avatar">Image</label>
+            <input type="file" name="avatar" id="avatar" />
+          </div>
+
+          <div>
+            <label for="genre">
+              <input
+                placeholder="Genre"
+                type="text"
+                name="genre"
+                id="genre"
+                value="<%= game.genre %>"
+                required
+              />
+            </label>
+          </div>
+
+          <div>
+            <label for="rating">
+              <input
+                placeholder="Rating"
+                type="number"
+                name="rating"
+                id="rating"
+                value="<%= game.rating %>"
+                required
+              />
+            </label>
+          </div>
+
+          <div>
+            <label for="yearReleased">
+              <input
+                placeholder="Year Released"
+                type="number"
+                name="yearReleased"
+                id="yearReleased"
+                value="<%= game.yearReleased %>"
+                required
+              />
+            </label>
+          </div>
+
+          <div>
+            <label for="developer">
+              <input
+                placeholder="Developer"
+                type="text"
+                name="developer"
+                id="developer"
+                value="<%= game.developer %>"
+                required
+              />
+            </label>
+          </div>
+
+          <div>
+            <label for="about">About</label>
+            <textarea name="about" id="about" rows="3" cols="15" required>
+<%= game.about %></textarea
+            >
+          </div>
+
+          <button type="submit">Update Info</button>
+        </form>
+      </section>
+    </main>
+  </body>
+</html>

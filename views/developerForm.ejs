@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/styles/styles.css" />
+    <link rel="stylesheet" href="/styles/header.css" />
+    <link rel="stylesheet" href="/styles/form.css" />
+    <title><%= title %></title>
+  </head>
+  <body>
+    <%- include('./partials/header.ejs') %>
+    <main>
+      <header>
+        <h1><%= title %></h1>
+      </header>
+
+      <section>
+        <form action="/developers/add" method="post" class="developer-form">
+          <%- include('./partials/error.ejs') %>
+
+          <label for="genre">
+            <input
+              placeholder="Developer"
+              type="text"
+              name="developer"
+              id="developer"
+              required
+            />
+          </label>
+          <button type="submit">Add Developer</button>
+        </form>
+      </section>
+    </main>
+  </body>
+</html>

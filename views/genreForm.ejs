@@ -6,7 +6,6 @@
     <link rel="stylesheet" href="/styles/styles.css" />
     <link rel="stylesheet" href="/styles/header.css" />
     <link rel="stylesheet" href="/styles/form.css" />
-    <link rel="stylesheet" href="/styles/addUpdateForm.css" />
     <title><%= title %></title>
   </head>
   <body>
@@ -17,13 +16,20 @@
       </header>
 
       <section>
-        <% if (url.includes('genres/add')) { %> <%-
-        include('./partials/genreForm.ejs') %> <% } else if
-        (url.includes('developers/add')) { %> <%-
-        include('./partials/developerForm.ejs') %> <% } else if
-        (url.includes('games/add')) { %> <%- include('./partials/gameForm.ejs')
-        %> <% } else if (url.includes('update')) { %> <%-
-        include('./partials/updateForm.ejs') %> <% } %>
+        <form action="/genres/add" method="post" class="genre-form">
+          <%- include('./partials/error.ejs') %>
+
+          <label for="genre">
+            <input
+              placeholder="Genre"
+              type="text"
+              name="genre"
+              id="genre"
+              required
+            />
+          </label>
+          <button type="submit">Add Genre</button>
+        </form>
       </section>
     </main>
   </body>
