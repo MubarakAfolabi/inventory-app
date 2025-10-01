@@ -15,11 +15,11 @@ const storage = multer.diskStorage({
 
 const upload = multer({ storage: storage });
 
-gameRouter.get("/", gameController.gamesListGet);
+gameRouter.get("/", gameController.infoListGet);
 gameRouter.get("/list/:id", gameController.gameInfoGet);
 gameRouter.get("/add", gameController.addGameGet);
 
-gameRouter.post("/add", upload.single("avatar"), gameController.addGamePost);
+gameRouter.post("/add", upload.single("avatar"), gameController.addInfoPost);
 gameRouter.post("/list/:id/delete", gameController.deleteGamePost);
 
 gameRouter.get("/list/:id/update", gameController.updateGameGet);

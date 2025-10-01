@@ -1,5 +1,6 @@
 const storage = require("../db/storage");
 const { body, validationResult } = require("express-validator");
+const db = require("../db/queries");
 
 const lengthErr = "must be between 1 and 15 characters.";
 
@@ -36,19 +37,28 @@ const validateInfo = [
     .withMessage(`Developer ${lengthErr}`),
 ];
 
-const gamesListGet = (req, res) => {
+// const gamesListGet = (req, res) => {
+//   let message;
+//   res.render("gamesList", {
+//     title: "Games",
+//     storage: storage.getGames(),
+//     message: message,
+//   });
+// };
+
+async function infoListGet(req, res) {
   let message;
+  const info = await db.getAllInfo();
   res.render("gamesList", {
     title: "Games",
-    storage: storage.getGames(),
+    storage: await info,
     message: message,
   });
-};
+}
 
 const gameInfoGet = (req, res) => {
   const { id } = req.params;
   const gameInfo = storage.getGame(id);
-  console.log(gameInfo);
   res.render("gameInfo.ejs", { title: "Game Info", gameInfo: gameInfo });
 };
 
@@ -56,26 +66,50 @@ const addGameGet = (req, res) => {
   res.render("addForm", { title: "Add Info" });
 };
 
-const addGamePost = [
+// const addGamePost = [
+//   validateInfo,
+//   (req, res) => {
+//     const errors = validationResult(req);
+//     if (!errors.isEmpty()) {
+//       return res
+//         .status(400)
+//         .render("addForm", { title: "Add Info", errors: errors.array() });
+//     }
+
+//     const { name, genre, rating, yearReleased, developer, about } = req.body;
+//     storage.addGame({
+//       name: name,
+//       file: req.file,
+//       genre: genre,
+//       rating: rating,
+//       yearReleased: yearReleased,
+//       developer: developer,
+//       about: about,
+//     });
+//     res.redirect("/games");
+//   },
+// ];
+
+const addInfoPost = [
   validateInfo,
-  (req, res) => {
+  async (req, res) => {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
       return res
         .status(400)
         .render("addForm", { title: "Add Info", errors: errors.array() });
     }
-
     const { name, genre, rating, yearReleased, developer, about } = req.body;
-    storage.addGame({
-      name: name,
-      file: req.file,
-      genre: genre,
-      rating: rating,
-      yearReleased: yearReleased,
-      developer: developer,
-      about: about,
-    });
+    const image = "/uploads/" + req.file.filename;
+    await db.addInfo(
+      name,
+      image,
+      genre,
+      rating,
+      yearReleased,
+      developer,
+      about
+    );
     res.redirect("/games");
   },
 ];
@@ -126,10 +160,10 @@ const deleteGamePost = (req, res) => {
 };
 
 module.exports = {
-  gamesListGet,
+  infoListGet,
   gameInfoGet,
   addGameGet,
-  addGamePost,
+  addInfoPost,
   updateGameGet,
   updateGamePost,
   deleteGamePost,
