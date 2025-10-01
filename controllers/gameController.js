@@ -37,18 +37,10 @@ const validateInfo = [
     .withMessage(`Developer ${lengthErr}`),
 ];
 
-// const gamesListGet = (req, res) => {
-//   let message;
-//   res.render("gamesList", {
-//     title: "Games",
-//     storage: storage.getGames(),
-//     message: message,
-//   });
-// };
-
 async function infoListGet(req, res) {
   let message;
   const info = await db.getAllInfo();
+  console.log(info);
   res.render("gamesList", {
     title: "Games",
     storage: info,
@@ -66,30 +58,6 @@ const gameInfoGet = async (req, res) => {
 const addGameGet = (req, res) => {
   res.render("addForm", { title: "Add Info" });
 };
-
-// const addGamePost = [
-//   validateInfo,
-//   (req, res) => {
-//     const errors = validationResult(req);
-//     if (!errors.isEmpty()) {
-//       return res
-//         .status(400)
-//         .render("addForm", { title: "Add Info", errors: errors.array() });
-//     }
-
-//     const { name, genre, rating, yearReleased, developer, about } = req.body;
-//     storage.addGame({
-//       name: name,
-//       file: req.file,
-//       genre: genre,
-//       rating: rating,
-//       yearReleased: yearReleased,
-//       developer: developer,
-//       about: about,
-//     });
-//     res.redirect("/games");
-//   },
-// ];
 
 const addInfoPost = [
   validateInfo,
@@ -115,40 +83,42 @@ const addInfoPost = [
   },
 ];
 
-const updateGameGet = (req, res) => {
+const updateGameGet = async (req, res) => {
   const { id } = req.params;
-  const game = storage.getGame(id);
+  const gameInfo = await db.getInfo(id);
+  console.log(gameInfo[0]);
   res.render("updateForm", {
     title: "Update Info",
-    game: game,
+    game: gameInfo[0],
   });
 };
 
 const updateGamePost = [
   validateInfo,
-  (req, res) => {
+  async (req, res) => {
     const { id } = req.params;
-    const game = storage.getGame(id);
+    const gameInfo = await db.getInfo(id);
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
       return res.status(400).render("updateForm", {
         title: "Update Info",
-        game: game,
+        game: gameInfo[0],
         errors: errors.array(),
       });
     }
+    let image = gameInfo[0].image;
     const { name, genre, rating, yearReleased, developer, about } = req.body;
     if (req.file) {
-      storage.updateGame(id, { file: req.file });
+      image = "/uploads/" + req.file.filename;
     }
-    storage.updateGame(id, {
-      id: id,
-      name: name,
-      genre: genre,
-      rating: rating,
-      yearReleased: yearReleased,
-      developer: developer,
-      about: about,
+    await db.updateInfo(id, {
+      name,
+      image,
+      genre,
+      rating,
+      yearReleased,
+      developer,
+      about,
     });
     res.redirect(`/games/list/${id}`);
   },

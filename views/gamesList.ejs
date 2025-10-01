@@ -30,7 +30,7 @@
         <ul>
           <% storage.forEach((game, index) => { %>
           <li>
-            <a href="/games/list/<%= index + 1 %>">
+            <a href="/games/list/<%= game.id %>">
               <%- include('./partials/gameCard.ejs', { game: game }) %>
             </a>
           </li>

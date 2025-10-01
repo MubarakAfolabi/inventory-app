@@ -23,19 +23,18 @@ const genrePageGet = async (req, res) => {
   res.render("genres", { title: "Genre", genres: genres });
 };
 
-const genreGamesGet = (req, res) => {
+const genreGamesGet = async (req, res) => {
   let message;
-  const games = [];
   const { genre } = req.params;
-  storage.getGames().forEach((game) => {
-    if (game.genre === genre) {
-      games.push(game);
-    }
-  });
-  if (games.length === 0) {
+  const gamesInfo = await db.getGenreInfo(genre);
+  if (gamesInfo.length === 0) {
     message = `No Games Found Under ${genre}`;
   }
-  res.render("gamesList", { title: "Games", storage: games, message: message });
+  res.render("gamesList", {
+    title: "Games",
+    storage: gamesInfo,
+    message: message,
+  });
 };
 
 const addGenreGet = (req, res) => {

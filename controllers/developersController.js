@@ -23,20 +23,18 @@ const developerPageGet = async (req, res) => {
   res.render("developers", { title: "Developers", developers: developers });
 };
 
-const developerGamesGet = (req, res) => {
-  const games = [];
+const developerGamesGet = async (req, res) => {
   let message;
   const { developer } = req.params;
-  storage.getGames().forEach((game) => {
-    if (game.developer === developer) {
-      games.push(game);
-    }
-  });
-
-  if (games.length === 0) {
+  const gamesInfo = await db.getDeveloperInfo(developer);
+  if (gamesInfo.length === 0) {
     message = `No Games Found Under ${developer}`;
   }
-  res.render("gamesList", { title: "Games", storage: games, message: message });
+  res.render("gamesList", {
+    title: "Games",
+    storage: gamesInfo,
+    message: message,
+  });
 };
 
 const addDeveloperGet = (req, res) => {

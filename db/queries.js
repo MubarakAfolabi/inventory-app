@@ -24,7 +24,7 @@ async function addInfo(
 }
 
 async function getAllInfo() {
-  const { rows } = await pool.query("SELECT * FROM gameinfo");
+  const { rows } = await pool.query("SELECT * FROM gameinfo ORDER BY id");
   return rows;
 }
 
@@ -32,6 +32,22 @@ async function getInfo(id) {
   const { rows } = await pool.query("SELECT * FROM gameinfo WHERE id = ($1)", [
     id,
   ]);
+  return rows;
+}
+
+async function getGenreInfo(genre) {
+  const { rows } = await pool.query(
+    "SELECT * FROM gameinfo WHERE genre = ($1)",
+    [genre]
+  );
+  return rows;
+}
+
+async function getDeveloperInfo(developer) {
+  const { rows } = await pool.query(
+    "SELECT * FROM gameinfo WHERE developer = ($1)",
+    [developer]
+  );
   return rows;
 }
 
@@ -45,10 +61,32 @@ async function getAllGenres() {
   return rows;
 }
 
+async function updateInfo(
+  id,
+  { name, image, genre, rating, yearReleased, developer, about }
+) {
+  await pool.query(
+    "UPDATE gameinfo SET name = $1, image = $2, genre = $3, rating = $4, year_released = $5, developer = $6, about = $7 WHERE id = $8",
+    [name, image, genre, rating, yearReleased, developer, about, id]
+  );
+
+  await pool.query(
+    "INSERT INTO developerinfo (developer) VALUES ($1) ON CONFLICT (developer) DO NOTHING",
+    [developer]
+  );
+  await pool.query(
+    "INSERT INTO genreinfo (genre) VALUES ($1) ON CONFLICT (genre) DO NOTHING",
+    [genre]
+  );
+}
+
 module.exports = {
   addInfo,
   getAllInfo,
   getInfo,
+  getGenreInfo,
+  getDeveloperInfo,
   getAllDevelopers,
   getAllGenres,
+  updateInfo,
 };
