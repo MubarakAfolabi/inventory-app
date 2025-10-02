@@ -1,3 +1,4 @@
+require("dotenv").config();
 const { body, validationResult } = require("express-validator");
 const db = require("../db/queries");
 
@@ -34,6 +35,7 @@ const validateInfo = [
     })
     .isLength({ min: 1, max: 15 })
     .withMessage(`Developer ${lengthErr}`),
+  body("password").trim(),
 ];
 
 const infoListGet = async (req, res) => {
@@ -65,18 +67,26 @@ const addInfoPost = [
         .status(400)
         .render("addForm", { title: "Add Info", errors: errors.array() });
     }
-    const { name, genre, rating, yearReleased, developer, about } = req.body;
-    const image = "/uploads/" + req.file.filename;
-    await db.addInfo(
-      name,
-      image,
-      genre,
-      rating,
-      yearReleased,
-      developer,
-      about
-    );
-    res.redirect("/games");
+    const { password } = req.body;
+    if (process.env.PASSWORD === password) {
+      const { name, genre, rating, yearReleased, developer, about } = req.body;
+      const image = "/uploads/" + req.file.filename;
+      await db.addInfo(
+        name,
+        image,
+        genre,
+        rating,
+        yearReleased,
+        developer,
+        about
+      );
+      res.redirect("/games");
+    } else {
+      res.render("addForm", {
+        title: "Add Info",
+        message: "Password Incorrect",
+      });
+    }
   },
 ];
 

@@ -43,6 +43,7 @@ section {
 
 .add-form input[type="text"],
 .add-form input[type="number"],
+.add-form input[type="password"],
 .update-form input[type="text"],
 .update-form input[type="number"],
 .genre-form input,
@@ -66,7 +67,9 @@ section {
 
 .add-form textarea,
 .update-form textarea {
+  font-size: var(--text-size-md);
   resize: none;
+  padding: var(--padding-sm);
   border-radius: 5px;
   outline-color: hsl(319, 83%, 36%);
 }
