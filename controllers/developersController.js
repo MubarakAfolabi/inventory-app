@@ -58,7 +58,7 @@ const addDeveloperPost = [
     } else {
       res.render("developerForm", {
         title: "Add Developer",
-        message: "Password Incorrect",
+        message: "Incorrect Password",
       });
     }
   },

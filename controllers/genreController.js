@@ -57,7 +57,7 @@ const addGenrePost = [
     } else {
       res.render("genreForm", {
         title: "Add Genre",
-        message: "Password Incorrect",
+        message: "Incorrect Password",
       });
     }
   },

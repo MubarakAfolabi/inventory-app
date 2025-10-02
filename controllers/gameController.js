@@ -83,7 +83,7 @@ const addInfoPost = [
     } else {
       res.render("addForm", {
         title: "Add Info",
-        message: "Password Incorrect",
+        message: "Incorrect Password",
       });
     }
   },
@@ -133,7 +133,7 @@ const updateGamePost = [
       res.render("updateForm", {
         title: "Update Info",
         game: gameInfo[0],
-        message: "Password Incorrect",
+        message: "Incorrect Password",
       });
     }
   },
@@ -154,7 +154,7 @@ const deleteGamePost = async (req, res) => {
     res.render("deleteForm", {
       title: "Delete Info",
       id: id,
-      message: "Password Incorrect",
+      message: "Incorrect Password",
     });
   }
 };
