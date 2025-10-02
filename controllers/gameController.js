@@ -36,7 +36,7 @@ const validateInfo = [
     .withMessage(`Developer ${lengthErr}`),
 ];
 
-async function infoListGet(req, res) {
+const infoListGet = async (req, res) => {
   let message;
   const info = await db.getAllInfo();
   res.render("gamesList", {
@@ -44,7 +44,7 @@ async function infoListGet(req, res) {
     storage: info,
     message: message,
   });
-}
+};
 
 const gameInfoGet = async (req, res) => {
   const { id } = req.params;

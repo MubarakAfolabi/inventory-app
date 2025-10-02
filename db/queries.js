@@ -44,7 +44,10 @@ async function getGenreInfo(genre) {
 }
 
 async function addGenre(genre) {
-  await pool.query("INSERT INTO genreinfo (genre) VALUES ($1)", [genre]);
+  await pool.query(
+    "INSERT INTO genreinfo (genre) VALUES ($1) ON CONFLICT (genre) DO NOTHING",
+    [genre]
+  );
 }
 
 async function getDeveloperInfo(developer) {
@@ -56,9 +59,10 @@ async function getDeveloperInfo(developer) {
 }
 
 async function addDeveloper(developer) {
-  await pool.query("INSERT INTO developerinfo (developer) VALUES ($1)", [
-    developer,
-  ]);
+  await pool.query(
+    "INSERT INTO developerinfo (developer) VALUES ($1) ON CONFLICT (developer) DO NOTHING",
+    [developer]
+  );
 }
 
 async function getAllDevelopers() {
