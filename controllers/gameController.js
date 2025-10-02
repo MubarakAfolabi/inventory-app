@@ -35,7 +35,6 @@ const validateInfo = [
     })
     .isLength({ min: 1, max: 15 })
     .withMessage(`Developer ${lengthErr}`),
-  body("password").trim(),
 ];
 
 const infoListGet = async (req, res) => {

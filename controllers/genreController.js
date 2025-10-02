@@ -15,7 +15,6 @@ const validationInfo = [
     })
     .isLength({ min: 1, max: 15 })
     .withMessage(`Genre ${lengthErr}`),
-  body("password").trim(),
 ];
 
 const genrePageGet = async (req, res) => {

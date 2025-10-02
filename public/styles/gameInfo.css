@@ -67,3 +67,7 @@ main section {
 .button-container .delete-button:hover {
   color: hsl(0, 0%, 93%);
 }
+
+.about-text {
+  max-width: 40rem;
+}
