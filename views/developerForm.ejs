@@ -18,16 +18,29 @@
       <section>
         <form action="/developers/add" method="post" class="developer-form">
           <%- include('./partials/error.ejs') %>
+          <div>
+            <label for="genre">
+              <input
+                placeholder="Developer"
+                type="text"
+                name="developer"
+                id="developer"
+                required
+              />
+            </label>
+          </div>
 
-          <label for="genre">
-            <input
-              placeholder="Developer"
-              type="text"
-              name="developer"
-              id="developer"
-              required
-            />
-          </label>
+          <div>
+            <label for="password">
+              <input
+                placeholder="Admin Password"
+                type="password"
+                name="password"
+                id="name"
+                required
+              />
+            </label>
+          </div>
           <button type="submit">Add Developer</button>
         </form>
       </section>

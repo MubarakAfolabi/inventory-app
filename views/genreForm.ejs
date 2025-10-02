@@ -19,15 +19,30 @@
         <form action="/genres/add" method="post" class="genre-form">
           <%- include('./partials/error.ejs') %>
 
-          <label for="genre">
-            <input
-              placeholder="Genre"
-              type="text"
-              name="genre"
-              id="genre"
-              required
-            />
-          </label>
+          <div>
+            <label for="genre">
+              <input
+                placeholder="Genre"
+                type="text"
+                name="genre"
+                id="genre"
+                required
+              />
+            </label>
+          </div>
+
+          <div>
+            <label for="password">
+              <input
+                placeholder="Admin Password"
+                type="password"
+                name="password"
+                id="name"
+                required
+              />
+            </label>
+          </div>
+
           <button type="submit">Add Genre</button>
         </form>
       </section>

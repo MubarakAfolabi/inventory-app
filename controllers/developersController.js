@@ -1,3 +1,4 @@
+require("dotenv").config();
 const { body, validationResult } = require("express-validator");
 const db = require("../db/queries");
 
@@ -49,9 +50,17 @@ const addDeveloperPost = [
         errors: errors.array(),
       });
     }
-    const { developer } = req.body;
-    await db.addDeveloper(developer);
-    res.redirect("/developers");
+    const { password } = req.body;
+    if (process.env.PASSWORD === password) {
+      const { developer } = req.body;
+      await db.addDeveloper(developer);
+      res.redirect("/developers");
+    } else {
+      res.render("developerForm", {
+        title: "Add Developer",
+        message: "Password Incorrect",
+      });
+    }
   },
 ];
 

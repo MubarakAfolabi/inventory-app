@@ -1,3 +1,4 @@
+require("dotenv").config();
 const { body, validationResult } = require("express-validator");
 const db = require("../db/queries");
 
@@ -14,6 +15,7 @@ const validationInfo = [
     })
     .isLength({ min: 1, max: 15 })
     .withMessage(`Genre ${lengthErr}`),
+  body("password").trim(),
 ];
 
 const genrePageGet = async (req, res) => {
@@ -48,9 +50,17 @@ const addGenrePost = [
         .status(400)
         .render("genreForm", { title: "Add Genre", errors: errors.array() });
     }
-    const { genre } = req.body;
-    await db.addGenre(genre);
-    res.redirect("/genres");
+    const { password } = req.body;
+    if (process.env.PASSWORD === password) {
+      const { genre } = req.body;
+      await db.addGenre(genre);
+      res.redirect("/genres");
+    } else {
+      res.render("genreForm", {
+        title: "Add Genre",
+        message: "Password Incorrect",
+      });
+    }
   },
 ];
 
