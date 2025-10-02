@@ -46,6 +46,7 @@ section {
 .add-form input[type="password"],
 .update-form input[type="text"],
 .update-form input[type="number"],
+.update-form input[type="password"],
 .genre-form input,
 .developer-form input {
   background-color: transparent;

@@ -112,21 +112,31 @@ const updateGamePost = [
         errors: errors.array(),
       });
     }
-    let image = gameInfo[0].image;
-    const { name, genre, rating, yearReleased, developer, about } = req.body;
-    if (req.file) {
-      image = "/uploads/" + req.file.filename;
+    const { password } = req.body;
+
+    if (process.env.PASSWORD === password) {
+      let image = gameInfo[0].image;
+      const { name, genre, rating, yearReleased, developer, about } = req.body;
+      if (req.file) {
+        image = "/uploads/" + req.file.filename;
+      }
+      await db.updateInfo(id, {
+        name,
+        image,
+        genre,
+        rating,
+        yearReleased,
+        developer,
+        about,
+      });
+      res.redirect(`/games/list/${id}`);
+    } else {
+      res.render("updateForm", {
+        title: "Update Info",
+        game: gameInfo[0],
+        message: "Password Incorrect",
+      });
     }
-    await db.updateInfo(id, {
-      name,
-      image,
-      genre,
-      rating,
-      yearReleased,
-      developer,
-      about,
-    });
-    res.redirect(`/games/list/${id}`);
   },
 ];
 
