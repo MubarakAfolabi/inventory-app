@@ -18,7 +18,7 @@ const validationInfo = [
 
 const genrePageGet = async (req, res) => {
   const genres = await db.getAllGenres();
-  res.render("genres", { title: "Genre", genres: genres });
+  res.render("genres", { title: "Genres", genres: genres });
 };
 
 const genreGamesGet = async (req, res) => {

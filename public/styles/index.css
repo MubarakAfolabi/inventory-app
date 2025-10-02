@@ -29,6 +29,15 @@ section ul {
   color: hsl(319, 83%, 36%);
 }
 
+.footer {
+  font-size: var(--text-size-md);
+  color: white;
+  background-color: hsl(278, 54%, 23%);
+  display: flex;
+  justify-content: center;
+  padding: var(--padding-md);
+}
+
 @media (min-width: 48em) {
   section ul {
     flex-direction: row;
