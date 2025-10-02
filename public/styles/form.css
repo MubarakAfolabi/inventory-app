@@ -19,10 +19,7 @@ section {
   align-items: center;
 }
 
-.add-form,
-.update-form,
-.genre-form,
-.developer-form {
+form {
   flex: 1;
   background-color: white;
   display: flex;
@@ -34,21 +31,15 @@ section {
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.33);
 }
 
-.add-form div,
-.update-form div {
+form div {
   display: flex;
   flex-direction: column;
   gap: var(--gap-xsm);
 }
 
-.add-form input[type="text"],
-.add-form input[type="number"],
-.add-form input[type="password"],
-.update-form input[type="text"],
-.update-form input[type="number"],
-.update-form input[type="password"],
-.genre-form input,
-.developer-form input {
+form input[type="text"],
+form input[type="number"],
+form input[type="password"] {
   background-color: transparent;
   font-size: var(--text-sm);
   border: none;
@@ -59,15 +50,11 @@ section {
   width: 100%;
   outline: none;
 }
-.add-form input:focus,
-.update-form input:focus,
-.genre-form input:focus,
-.developer-form input:focus {
+form input:focus {
   border-color: hsl(319, 83%, 36%);
 }
 
-.add-form textarea,
-.update-form textarea {
+form textarea {
   font-size: var(--text-size-md);
   resize: none;
   padding: var(--padding-sm);
@@ -75,10 +62,7 @@ section {
   outline-color: hsl(319, 83%, 36%);
 }
 
-.add-form button,
-.update-form button,
-.genre-form button,
-.developer-form button {
+form button {
   color: hsl(277, 95%, 15%);
   font-size: var(--text-sm);
   background-color: transparent;
@@ -89,10 +73,7 @@ section {
   border-color: hsl(319, 83%, 36%);
   cursor: pointer;
 }
-.add-form button:hover,
-.update-form button:hover,
-.genre-form button:hover,
-.developer-form button:hover {
+form button:hover {
   color: white;
   background-color: hsl(319, 83%, 36%);
 }

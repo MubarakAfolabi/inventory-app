@@ -140,10 +140,24 @@ const updateGamePost = [
   },
 ];
 
+const deletePageGet = (req, res) => {
+  const { id } = req.params;
+  res.render("deleteForm", { title: "Delete Info", id: id });
+};
+
 const deleteGamePost = async (req, res) => {
   const { id } = req.params;
-  await db.deleteInfo(id);
-  res.redirect("/games");
+  const { password } = req.body;
+  if (process.env.PASSWORD === password) {
+    await db.deleteInfo(id);
+    res.redirect("/games");
+  } else {
+    res.render("deleteForm", {
+      title: "Delete Info",
+      id: id,
+      message: "Password Incorrect",
+    });
+  }
 };
 
 module.exports = {
@@ -153,5 +167,6 @@ module.exports = {
   addInfoPost,
   updateGameGet,
   updateGamePost,
+  deletePageGet,
   deleteGamePost,
 };

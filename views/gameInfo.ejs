@@ -35,14 +35,18 @@
             <button>Update</button>
           </a>
 
-          <form action="/games/list/<%= gameInfo.id %>/delete" method="post">
+          <a href="/games/list/<%= gameInfo.id %>/delete">
+            <button class="delete-button">Delete</button>
+          </a>
+
+          <!-- <form action="/games/list/<%= gameInfo.id %>/delete" method="post">
             <button
               class="delete-button"
               onclick="return confirm ('Are you sure you want to delete this info?')"
             >
               Delete
             </button>
-          </form>
+          </form> -->
         </div>
       </section>
     </main>

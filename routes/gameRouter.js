@@ -20,7 +20,6 @@ gameRouter.get("/list/:id", gameController.gameInfoGet);
 gameRouter.get("/add", gameController.addGameGet);
 
 gameRouter.post("/add", upload.single("avatar"), gameController.addInfoPost);
-gameRouter.post("/list/:id/delete", gameController.deleteGamePost);
 
 gameRouter.get("/list/:id/update", gameController.updateGameGet);
 gameRouter.post(
@@ -28,5 +27,8 @@ gameRouter.post(
   upload.single("avatar"),
   gameController.updateGamePost
 );
+
+gameRouter.get("/list/:id/delete", gameController.deletePageGet);
+gameRouter.post("/list/:id/delete", gameController.deleteGamePost);
 
 module.exports = gameRouter;
